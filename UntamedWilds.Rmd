@@ -1,0 +1,1017 @@
+---
+title: "Untamed Wilds - Session 1"
+author: "ghobo"
+date: "2021/4/14"
+output: 
+  html_document:
+    toc: true
+    theme: united
+---
+
+```{r include=FALSE}
+library(coren)
+library(trpgtool)
+seed_counter <- 1
+```
+
+This game will be a test for a west-marches-esque large scale slow colonial campaign.
+
+```
+Name: Esbert Morys
+Dynasty: Morys
+Adventures Completed: 1
+Fame: "Triumpher of Ublad"
+
+BEA: 1   ABL: 5   STR: 5   SPI: 3
+HP: 10   MP: 6   FC 10   SAN 50
+swords 48 parry 42 alchemy 48 dodge 41 acrobatics 46 stealth 35 aim 50
+Special Trait: Aim +10
+Wealth: 583 GP
+Longsword (1d4, 8GP)
+Worn Padded Vest (2a, T, 1GP)
+Lesser Catalyst [5] (D20, 4GP)
+Techniques: Boar's Tusk (D35, FC1), Strike of the Lady (D45, FC2)
+Spells: Firebolt (D35, R20m, MP2)
+
+Items: Adventurers Kit + Rations [3]
+```
+
+Esbert is of the Dynasty Morys. He is an explorer who traveled on the order of the crown of the Mythlus Empire to seek out unknown lands and procure their wealth.
+
+## (0,0) Lunst
+### Time: Day 1, 0600
+Esbert's adventure begins in the simple coastal settlement of Lunst, which is a scrubland. It has a simple wheat farm, dock, and tavern. He also possesses a small ship which is fitted with a small crew of sailors who are now doing work in the settlement. 
+
+There are not enough provisions to go on another journey back, so the main goal is to scout the area, procure food, and ascertain the savagery of the wilds.
+
+Threads: Scout, Procure food
+
+```{r echo=FALSE}
+rations <- 3
+rt(roll,1,6)
+```
+
+Esbert decides to go North to explore.
+
+```{r echo=FALSE}
+#Hex terrain generator
+rt(bloch_terrain, "scrub")
+```
+## (0,1) Scrub wilds
+### Time: Day 1, 1400 
+
+Does Esbert find anything?
+```{r echo=FALSE}
+#Hex contents generator
+paste(rt(ose_weather), ' Duration:', rt(rl,1,24))
+paste('Fate: ', rt(gme_fate_check),
+'Event:',rt(gme_event_check),
+'Detail:',rt(gme_detail_check),
+'Name:',rt(perilous_place))
+paste(
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(gme_actions_table2))
+```
+
+Esbert discovers a herd of strong looking horses. He decides to name it the Equine scrubland. He tries to go close to the horses but they disperse to his disappointment. Wiping his persperation away, he decides to continue further north. 
+
+## (0,2) Scrub Ruins the Spring
+### Time: Day 1, 2200
+
+Does Esbert find anything?
+```
+Threads: Scout, Procure food
+```
+```{r echo=FALSE}
+#Hex terrain generator
+terrainBefore <- "scrub"
+terrainNow <- rt(bloch_terrain, terrainBefore)
+rt(ose_randevent, terrainNow)
+terrainBefore <- terrainNow
+#Hex contents generator
+paste(rt(ose_weather), ' Duration:', rt(rl,1,24))
+paste('Fate: ', rt(gme_fate_check),
+'Event:',rt(gme_event_check),
+'Detail:',rt(gme_detail_check),
+'Name:',rt(perilous_place))
+paste(
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(gme_actions_table2))
+```
+
+
+Esbert discovers a large ruin which appears to have quite a few precarious structural elements that look like they would fall if they were touched.
+
+As it is late for the night he decides to consume a ration and rest for the night.
+```{r echo = FALSE}
+rations<-rations-1
+paste('Rations left:', rations)
+```
+
+Does anything happen at night?
+```{r echo = FALSE}
+paste('Fate: ', rt(gme_fate_check),
+'Event:',rt(gme_event_check),
+'Detail:',rt(gme_detail_check),
+'Name:',rt(perilous_place))
+paste(
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(gme_actions_table2))
+```
+
+Unluckily, while resting, one of the dangerously hanging beams crashes down onto Esbert! Does it hit him?
+
+```{r echo = FALSE}
+paste('Fate: ', rt(gme_fate_check),
+'Event:',rt(gme_event_check),
+'Detail:',rt(gme_detail_check),
+'Name:',rt(perilous_place))
+paste(
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(gme_actions_table2))
+```
+
+The ruin crashes down onto the ground which appears to be also made of brick, causing Esbert to go down crashing into the ruin!
+
+Esbert curses as he falls.
+```{r echo = FALSE}
+HP <- 10
+dmg <- rt(roll,1,4)
+HP <- HP-dmg
+paste('Esbert takes', dmg, 'damage!', 'HP:',HP)
+```
+
+Esbert is badly bruised, but he can still stand...
+
+Can Esbert climb out of here?
+```{r echo = FALSE}
+paste('Fate: ', rt(gme_fate_check),
+'Event:',rt(gme_event_check),
+'Detail:',rt(gme_detail_check),
+'Name:',rt(perilous_place))
+paste(
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(gme_actions_table2))
+```
+
+No! In fact, it was a miracle that Esbert even managed to survive. He finds himself in floating on deep water And above all the rubble and water is what seems to be a ruined spiral staircase that leads up.
+
+### (0,2) [0,0,-3] Scrub Ruins 'The Spring' - Underground Spire
+
+Esbert climbs up on the rubble and takes a breather. It is dark, and he hasn't had any rest. 
+
+Is there any way to get up the stairs?
+```{r echo = FALSE}
+paste('Fate: ', rt(gme_fate_check),
+'Event:',rt(gme_event_check),
+'Detail:',rt(gme_detail_check),
+'Name:',rt(perilous_place))
+paste(
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(gme_actions_table2))
+```
+
+No... the stairs crumble a few meters above him. But what Esbert notices is that there seems to be quite an abundance of palm sized, fat looking fish swimming about near the pool he is in. They look very nutritious. There is life here which means...
+
+Is there any path or tunnel in the water?
+
+```{r echo = FALSE}
+paste('Fate: ', rt(gme_fate_check),
+'Event:',rt(gme_event_check),
+'Detail:',rt(gme_detail_check),
+'Name:',rt(perilous_place))
+paste(
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(gme_actions_table2))
+```
+
+
+No! Is it his fate to be stuck here!? And as if to seal his fate, he hears a threateningly loud boom echo from somewhere in this deep drop that he is now stuck in...
+
+Esbert desperately tries to feel the walls round to see if there might be a secret passage of some sort. Does anything happen?
+
+```{r echo = FALSE}
+paste('Fate: ', rt(gme_fate_check),
+'Event:',rt(gme_event_check),
+'Detail:',rt(gme_detail_check),
+'Name:',rt(perilous_place))
+paste(
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(gme_actions_table2))
+```
+
+
+And after a few minutes of feeling about, his palm pushes into the stone, but instead he phases right through it as though it were thin air!!
+
+Before him now is a corridor dimly lit with bluish candles and an eerie-looking door above a flight of stairs that leads from inside of the water to a stone tiled floor leading to the door he sees.
+
+Feeling wary about the sorcery of the wall he went through, Esbert draws his sword and strikes the door with it. Does anything happen?
+
+```{r echo = FALSE}
+paste('Fate: ', rt(gme_fate_check),
+'Event:',rt(gme_event_check),
+'Detail:',rt(gme_detail_check),
+'Name:',rt(perilous_place))
+paste(
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(gme_actions_table2))
+```
+
+Nothing seems to happen to the door as he does so, but the moment his blade strikes the door, a frightening chill runs down his spine. Ghosts?
+
+```{r echo = FALSE}
+paste('Fate: ', rt(gme_fate_check),
+'Event:',rt(gme_event_check),
+'Detail:',rt(gme_detail_check),
+'Name:',rt(perilous_place))
+paste(
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(gme_actions_table2))
+```
+
+... Or just my imagination... Esbert thinks as he sheathes his blade and picks up one of the bluish candles and proceeds to open the door.
+
+[//]: # (Perilous Discovery)
+```{r echo = FALSE}
+paste('Fate: ', rt(gme_fate_check),
+'Event:',rt(gme_event_check),
+'Detail:',rt(gme_detail_check),
+'Name:',rt(perilous_place))
+paste('Discovery:',rt(perilous_discovery))
+paste(
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(gme_actions_table2))
+```
+
+The door doesn't budge... Esbert tries to break it with his strength.
+```{r echo=FALSE}
+sroll<-rt(roll,1,100)
+paste("STR:",sroll,"VS",5*10)
+```
+
+It breaks open and inside... 
+
+### (0,2) [0,1,-3] Scrub Ruins 'The Spring' - Glowing Toadsnest
+
+[//]: # (Perilous Discovery)
+```{r echo = FALSE}
+paste('Fate: ', rt(gme_fate_check),
+'Event:',rt(gme_event_check),
+'Detail:',rt(gme_detail_check),
+'Name:',rt(perilous_place))
+paste('Discovery:',rt(perilous_discovery))
+paste(
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(gme_actions_table2))
+```
+
+Appears to be some slimy nest of some sort... Resting near where Esbert entered is a strange glowing three eyed toad resting quaintly at a shallow pool which also seems to be glowing and exuding some sort of magic energy. Overall it looks quite grotesque. It notices Esbert because of the sound he made. Does the creature react in a hostile fashion?
+
+```{r echo = FALSE}
+paste('Fate: ', rt(gme_fate_check),
+'Event:',rt(gme_event_check),
+'Detail:',rt(gme_detail_check),
+'Name:',rt(perilous_place))
+paste(
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(gme_actions_table2))
+```
+
+
+```
+Mournmount Toad
+BEA: Average - beautiful skin patterns but disgusting features; ABL: Low - Lame, STR: Low - Lacking inside, SPI - High - illusion based 'lovely magic'
+
+BEA: 2, ABL: 1, STR: 3, SPI: 6
+Armour: 2 (Toadskin)
+HP: 6, FC: 2, MP: 12
+
+Spells: 
+Seduce MP 2 Makes creature want to embrace the caster
+Raw Magic Glob MP 1 Does 1d2 damage
+```
+
+Yes! It croaks in an odd manner and tries to spew a glob of goo at Esbert!
+TODO: Need a way to determine difficulty of creature encounter.
+
+
+Esbert tries to dodge!
+
+[//]: # Player Dodges
+```{r echo=FALSE}
+sroll<-rt(roll,1,100)
+paste("Toad Attack", sroll)
+
+sroll2<-rt(roll,1,100)
+paste("dodge :",sroll2+41,"VS",sroll+35)
+
+```
+
+Esbert fails to dodge it and the glob strikes him!
+
+[//]: # Player takes damage
+```{r echo = FALSE}
+dmg <- rt(roll,1,2)
+HP <- HP-dmg
+paste('Esbert takes', dmg, 'damage!', 'HP:',HP)
+```
+
+Cursing, Esbert charges towards the toad with his sword and makes a slash with the Lady's Strike!
+
+[//]: # (Player attacks)
+```{r echo=FALSE}
+sroll<-rt(roll,1,100)
+paste("Esbert Attack", sroll)
+
+sroll2<-rt(roll,1,100)
+paste("Toad armor :",sroll2+5,"VS",'Esbert Attack',sroll+48)
+```
+
+The slash connects with the toad's chest's flesh!
+
+[//]: # Player does damage
+```{r echo = FALSE}
+dmg <- rt(roll,1,6)
+dmg <- dmg + rt(roll,2,4)
+tHP <- 6 - dmg
+paste('Toad takes', dmg, 'damage!', 'HP:',tHP)
+
+```
+
+The attack is so powerful that it hews the toad into half and it sails off in an arc, causing glowing blood to spill all over the place!
+
+Panting heavily, Esbert looks about to see if there is any more danger in this room.
+
+```{r echo = FALSE}
+paste('Fate: ', rt(gme_fate_check),
+'Event:',rt(gme_event_check),
+'Detail:',rt(gme_detail_check),
+'Name:',rt(perilous_place))
+paste(
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(gme_actions_table2))
+```
+
+Thankfully it appears that there is nothing else that seems to of threat to Esbert at the moment. Sheathing his blade, Esbert finds somewhere dry to sit, and starts a fire with his tinderbox and tries to rest. Does he get disturbed?
+
+```{r echo = FALSE}
+paste('Fate: ', rt(gme_fate_check, chaosFactor=3),
+'Event:',rt(gme_event_check),
+'Detail:',rt(gme_detail_check),
+'Name:',rt(perilous_place))
+paste(
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(gme_actions_table2))
+```
+
+
+Thankfully, things seem to be settling down a bit and Esbert drifts off into sleep. There is a lot to do tomorrow - and getting out seems to be the main priority, after having been battered considerably today.
+
+## (0,2) [0,1,-3] Scrub Ruins 'The Spring' - Glowing Toadnest
+### Time: Day 2, 0600
+
+Esbert manages to rest for 8 hours straight, and some of his bruises seem to be less painful.
+
+[//]: # HP recovery 
+
+```{r echo = FALSE}
+HP<- HP +1
+paste('Esbert Recovers', 1, 'HP!', 'HP:',HP)
+FC <- 10
+```
+
+Esbert: "Now how the devil do I get out of here..."
+
+Esbert tries to look around for any other doors or passageways.
+
+
+```{r echo = FALSE}
+paste('Fate: ', rt(gme_fate_check, chaosFactor=3),
+'Event:',rt(gme_event_check),
+'Detail:',rt(gme_detail_check),
+'Name:',rt(perilous_place))
+paste(
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(gme_actions_table2))
+```
+
+And indeed other than the creepy looking door he came through, he discovers another grotesque door to go through. Being cautious again, he strikes the door with his blade. Does anything happen?
+
+```{r echo = FALSE}
+paste('Fate: ', rt(gme_fate_check, chaosFactor=3),
+'Event:',rt(gme_event_check),
+'Detail:',rt(gme_detail_check),
+'Name:',rt(perilous_place))
+paste(
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(gme_actions_table2))
+```
+
+The door seems safe, and actually not closed properly. He decides to proceed forwards...
+
+[//]: # (Perilous Discovery)
+```{r echo = FALSE}
+paste('Fate: ', rt(gme_fate_check),
+'Event:',rt(gme_event_check),
+'Detail:',rt(gme_detail_check),
+'Name:',rt(perilous_place))
+paste('Discovery:',rt(perilous_discovery))
+paste(
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(gme_actions_table2))
+```
+
+### (0,2) [1,1,-3] Scrub Ruins 'The Spring' - Ruined Storage Area
+
+The next room appears to be quite dry indeed, and damaged pieces of architecture are cast around the ground. It looks like it used to be some storage area. 
+
+Esbert looks around for more details to find and any way that would lead up.
+
+```{r echo = FALSE}
+paste('Fate: ', rt(gme_fate_check, chaosFactor=3),
+'Event:',rt(gme_event_check),
+'Detail:',rt(gme_detail_check),
+'Name:',rt(perilous_place))
+paste(
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(gme_actions_table2))
+```
+
+And after close inspection of the area, he discovers a grotesquely carved staircase that spirals upwards, travelling across the perimeter of the circular room. Good - looks like it will lead upwards. 
+
+[//]: # (Perilous Discovery)
+```{r echo = FALSE}
+paste('Fate: ', rt(gme_fate_check),
+'Event:',rt(gme_event_check),
+'Detail:',rt(gme_detail_check),
+'Name:',rt(perilous_place))
+paste('Discovery:',rt(perilous_discovery))
+paste(
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(gme_actions_table2))
+```
+
+But just before he reaches what appears to be a dimly lit portal at the top of the room, he sees the shadow of a small creature blocking the path!
+
+```
+Lowland Chinchilla
+BEA: Hi - Perfectly Cute, Drab-Khaki colored ; ABL: Hi - Small, Glorious Art STR: Low,  SPI: Low, Numbers: Generous 1d20. 
+
+This creature is a tiny vermin and attacks in swarms of 10-20. Their stats are all combined. Whenever you attack it, the damage done equals to the number of vermin you killed. If HP reaches 0, and vermin still remain in numbers, they will run away.
+
+BEA: 6, ABL: 6, STR: 1, SPI: 1
+Numbers: 1d20
+Armour: 1 (Fur)
+HP: 2, FC: 12, MP: 2
+Dodge: 60 (small, high abi)
+Bite: 40
+Teeth: 1 damage
+```
+As the creature drops down, suddenly...
+```{r echo = FALSE}
+paste('Number of Creatures: ', rt(roll, 1,20))
+```
+
+A few more drop down with it! Almost 10 chinchillas are blocking the stairs!
+
+Is the creature hostile?
+
+```{r echo = FALSE}
+paste('Fate: ', rt(gme_fate_check, chaosFactor=3),
+'Event:',rt(gme_event_check),
+'Detail:',rt(gme_detail_check),
+'Name:',rt(perilous_place))
+paste(
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(gme_actions_table2))
+```
+
+Yes! It leaps forward to attack!
+
+Esbert: "Pesky vermin!"
+
+[//]: # Player Dodges
+```{r echo=FALSE}
+sroll<-rt(roll,1,100)
+paste("Chinchilla Attack", sroll)
+
+sroll2<-rt(roll,1,100)
+paste("Dodge (Def VS Att):",sroll2+48,"VS",sroll+40)
+
+sroll3<-rt(roll,1,100)
+paste("Armor (Def VS Att):", sroll3+2,"VS",sroll+40)
+
+```
+
+Esbert tries to sidestep the Chinchillas, but they bite and snap it his flesh before regrouping behind him!
+
+Esbert: "That really hurts!!"
+
+[//]: # Player takes damage
+```{r echo = FALSE}
+dmg <- rt(roll,1,1)
+HP <- HP-dmg
+paste('Esbert takes', dmg, 'damage!', 'HP:',HP)
+```
+
+Hurriedly drawing his sword, Esbert makes a swing with his blade!
+
+```{r echo=FALSE}
+sroll<-rt(roll,1,100)
+paste("Esbert Attack roll", sroll)
+
+sroll2<-rt(roll,1,100)
+paste("Chinchillas Dodge roll", sroll2)
+
+paste("Dodge (Def VS Att):",sroll2+60,"VS",sroll+48)
+dmg <- rt(roll,1,6)
+cHP<- 2 - dmg
+paste('Chinchillas take', dmg, 'damage!', 'HP:',cHP)
+
+```
+
+3 Chinchillas are slain with a swing of the blade and the rest begin to flee!
+
+Heaving from the tiring encounter, Esbert continues to walk up the stairs to the next room.
+
+[//]: # (Perilous Discovery)
+```{r echo = FALSE}
+paste('Fate: ', rt(gme_fate_check, chaosFactor=2),
+'Event:',rt(gme_event_check),
+'Detail:',rt(gme_detail_check),
+'Name:',rt(perilous_place))
+paste('Discovery:',rt(perilous_discovery))
+paste(
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(gme_actions_table2))
+```
+
+
+### (0,2) [1,1,-2] Scrub Ruins 'The Spring' - Chinchilla Nest
+
+Esbert: "You've got to be kidding me..."
+
+Scurrying around broken lavish furniture are large amounts Chinchillas crawiling about in the room.
+
+Are they Hostile?
+
+```{r echo = FALSE}
+paste('Fate: ', rt(gme_fate_check),
+'Event:',rt(gme_event_check),
+'Detail:',rt(gme_detail_check),
+'Name:',rt(perilous_place))
+paste(
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(gme_actions_table2))
+```
+
+Yes!! In fact the blood on your blade agitates them and they hiss threateningly at Esbert!
+
+Is there a door in the room?
+
+```{r echo = FALSE}
+paste('Fate: ', rt(gme_fate_check),
+'Event:',rt(gme_event_check),
+'Detail:',rt(gme_detail_check),
+'Name:',rt(perilous_place))
+paste(
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(gme_actions_table2))
+```
+
+Esbert: "I just need to get there somehow... Well here goes everything..."
+
+Esbert takes a deep breath and darts forwards to the door and tries to open it by tackling it with his shoulder. Does it open?
+
+```{r echo=FALSE}
+sroll<-rt(roll,1,100)
+paste("STR:",sroll,"VS",5*10)
+```
+
+Yes! The door bursts open and Esbert continues running ahead.
+
+Do the Chinchillas follow him?
+
+```{r echo = FALSE}
+paste('Fate: ', rt(gme_fate_check, chaosAdjust=2),
+'Event:',rt(gme_event_check),
+'Detail:',rt(gme_detail_check),
+'Name:',rt(perilous_place))
+paste(
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(gme_actions_table2))
+```
+
+Indeed, a huge swarm of Chinchillas chase after him. Esbert pants as he runs as fast as he can down the corridor to the next room.
+
+[//]: # (Perilous Discovery)
+```{r echo = FALSE}
+paste('Fate: ', rt(gme_fate_check, chaosFactor=2),
+'Event:',rt(gme_event_check),
+'Detail:',rt(gme_detail_check),
+'Name:',rt(perilous_place))
+paste('Discovery:',rt(perilous_discovery))
+paste(
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(gme_actions_table2))
+```
+
+### (0,2) [2,1,-2] Scrub Ruins 'The Spring' - Animated Room
+The next room is yet another room with extravagant furniture, but much of the room seems empty.
+
+```
+Animated Poor Furniture
+BEA: Hi - Extravagant ; ABL: Hi - Ceaselessly Graceful; STR: Low - Wildly Poor,  SPI: Low - Wildly Poor 
+
+BEA: 6, ABL: 6, STR: 1, SPI: 1
+Armour: 1 (Poor Material)
+HP: 2, FC: 12, MP: 2
+Dodge: 60 (small, high abi)
+Body Slam: 1d4
+```
+
+Is the creature in the room hostile?
+```{r echo = FALSE}
+paste('Fate: ', rt(gme_fate_check, chaosAdjust=2),
+'Event:',rt(gme_event_check),
+'Detail:',rt(gme_detail_check),
+'Name:',rt(perilous_place))
+paste(
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(gme_actions_table2))
+```
+
+Indeed - what looked like an abandoned, run down room suddenly looks absured as the furniture starts moving in the room - towards Esbert!
+
+Esbert looks about for an exit out of this room!
+
+```{r echo = FALSE}
+paste('Fate: ', rt(gme_fate_check, chaosAdjust=2),
+'Event:',rt(gme_event_check),
+'Detail:',rt(gme_detail_check),
+'Name:',rt(perilous_place))
+paste(
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(gme_actions_table2))
+```
+
+And naturally he tries to slam his way through that exit! The furniture however tries to get in his way!
+
+[//]: # Player Dodges
+```{r echo=FALSE}
+sroll<-rt(roll,1,100)
+paste("Animated Attack", sroll)
+
+sroll2<-rt(roll,1,100)
+paste("Dodge (Def VS Att):",sroll2+48,"VS",sroll)
+
+sroll3<-rt(roll,1,100)
+paste("Armor (Def VS Att):", sroll3+2,"VS",sroll)
+
+```
+
+Just by a hair's breadth, Esbert dodges the attack and he tries to slam the door open with a shoulder ram!
+
+```{r echo=FALSE}
+sroll<-rt(roll,1,100)
+paste("STR:",sroll,"VS",5*10)
+```
+
+It doesn't Open!
+
+Esbert: "God damn it!"
+
+The Chinchillas seem to be catching up behind him, and the furniture attacks!
+
+[//]: # Player Dodges
+```{r echo=FALSE}
+sroll<-rt(roll,1,100)
+paste("Animated Attack", sroll)
+
+sroll2<-rt(roll,1,100)
+paste("Dodge (Def VS Att):",sroll2+48,"VS",sroll)
+
+sroll3<-rt(roll,1,100)
+paste("Armor (Def VS Att):", sroll3+2,"VS",sroll)
+
+```
+
+Another dodge, and in the same movement Esbert tries at the door again!
+
+```{r echo=FALSE}
+sroll<-rt(roll,1,100)
+paste("STR:",sroll,"VS",5*10)
+```
+
+Success! The door breaks open and he continues running ahead!
+
+Does the Furniture pursue?
+
+```{r echo = FALSE}
+paste('Fate: ', rt(gme_fate_check, chaosAdjust=2),
+'Event:',rt(gme_event_check),
+'Detail:',rt(gme_detail_check),
+'Name:',rt(perilous_place))
+paste(
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(gme_actions_table2))
+```
+
+Thankfully it doesn't and it seems to now be the target of the attacks by the Chinchillas, biting away at its wood! 
+
+```
+Animated Poor Furniture
+BEA: Hi - Extravagant ; ABL: Hi - Ceaselessly Graceful; STR: Low - Wildly Poor,  SPI: Low - Wildly Poor 
+
+Possesses easy to chew magical wood that Lowland Chinchillas like to eat.
+
+BEA: 6, ABL: 6, STR: 1, SPI: 1
+Armour: 1 (Poor Material)
+HP: 2, FC: 12, MP: 2
+Dodge: 60 (small, high abi)
+Body Slam: 1d4
+```
+
+Panting heavily, Esbert moves on to the next room.
+
+[//]: # (Perilous Discovery)
+```{r echo = FALSE}
+paste('Fate: ', rt(gme_fate_check, chaosFactor=2),
+'Event:',rt(gme_event_check),
+'Detail:',rt(gme_detail_check),
+'Name:',rt(perilous_place))
+paste('Discovery:',rt(perilous_discovery))
+paste(
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(gme_actions_table2))
+```
+
+
+Unfortunately, it seems to be a dead end... And creepily, there seems to be signs of a lot of dried blood at the end of this corridor. Surely there must be a secret passage somewhere?
+
+[//]: # (Perilous Discovery)
+```{r echo = FALSE}
+paste('Fate: ', rt(gme_fate_check, chaosAdjust=2),
+'Event:',rt(gme_event_check),
+'Detail:',rt(gme_detail_check),
+'Name:',rt(perilous_place))
+paste('Discovery:',rt(perilous_discovery))
+paste(
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(gme_actions_table2))
+```
+
+
+### (0,2) [2,2,-2] Scrub Ruins 'The Spring' - Intoxicating Plant Room
+Indeed, there seems to be a strange aromatic scent emerging from dead end. As Esbert touches it, his hand phases through it, and beyond he discovers a room filled with plants that give off a strangely humid and intoxicating sweet scent.
+
+```
+Rockrock Plant
+BEA: Hi - Jovially Bizarre ; ABL: Lo - Investment; STR: Mid - Rudely Disagreeable,  SPI: Hi - Aromatic Usurp
+
+BEA: 6, ABL: 1, STR: 3, SPI: 6
+Armour: 2 (Plant Matter)
+HP: 6, FC: 2, MP: 12
+
+Vine Whip: 1d2
+Spells:
+Intoxicating Scent 2 MP - Makes a person delirious and susceptible to manipulation and losing consciousness
+
+```
+
+Is the creature hostile?
+
+```{r echo = FALSE}
+paste('Fate: ', rt(gme_fate_check, chaosAdjust=2),
+'Event:',rt(gme_event_check),
+'Detail:',rt(gme_detail_check),
+'Name:',rt(perilous_place))
+paste(
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(gme_actions_table2))
+```
+
+The plants don't seem to do anything, but Esbert's head is getting a bit woozy. He decides to look for a way out from this room.
+
+```{r echo = FALSE}
+paste('Fate: ', rt(gme_fate_check, chaosAdjust=2),
+'Event:',rt(gme_event_check),
+'Detail:',rt(gme_detail_check),
+'Name:',rt(perilous_place))
+paste(
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(gme_actions_table2))
+```
+
+Indeed, he finds a flight of stairs that goes up! Hurriedly, Esbert makes his way up those stairs, while avoiding stepping on the plants.
+
+```{r echo=FALSE}
+sroll<-rt(roll,1,100)
+paste("ABL:",sroll,"VS",5*10)
+```
+
+Unfortunately, the leaves are a bit too dense and Esbert does step on a few while while making his way towards the stairs. Does anything happen?
+
+```{r echo = FALSE}
+paste('Fate: ', rt(gme_fate_check, chaosAdjust=2),
+'Event:',rt(gme_event_check),
+'Detail:',rt(gme_detail_check),
+'Name:',rt(perilous_place))
+paste(
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(gme_actions_table2))
+```
+
+No, but Esbert notices that the leaves look quite disgusting indeed. The veins of each leaf look like muscular arms... Yuck...
+
+[//]: # (Perilous Discovery)
+```{r echo = FALSE}
+paste('Fate: ', rt(gme_fate_check, chaosAdjust=2),
+'Event:',rt(gme_event_check),
+'Detail:',rt(gme_detail_check),
+'Name:',rt(perilous_place))
+paste('Discovery:',rt(perilous_discovery))
+paste(
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(gme_actions_table2))
+```
+
+### (0,2) [2,2,-1] Scrub Ruins 'The Spring' - Entrance Corridor
+
+At the end of the stairs, Esbert discovers a road that leads to what appears to be a very bright light. Is this the exit?
+
+```{r echo = FALSE}
+paste('Fate: ', rt(gme_fate_check, chaosAdjust=2),
+'Event:',rt(gme_event_check),
+'Detail:',rt(gme_detail_check),
+'Name:',rt(perilous_place))
+paste(
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(gme_actions_table2))
+```
+
+
+Yes! Hurriedly, Esbert makes his way to the end of the corridor and finds himself standing near a gate of the ruins. In the distance he can see the collapsed part of the ruins where he decided to sleep last night.
+
+Esbert: "Phew... Almost lost my life back there... What the deuce were with those creatures? At least I'll be able to tell the rest to stay away from this dangerous place..."
+
+Now that Esbert has left the ruins, his goal now is to return to the settlement to report his discoveries and recover from his wounds...
+
+He heads south from where he came before.
+
+## (0,1) Scrub wilds - Equine Scrubland
+### Time: Day 3, 1400 
+
+```{r echo=FALSE}
+#Hex terrain generator
+rt(ose_randevent, 'scrub')
+#Hex contents generator
+paste(rt(ose_weather), ' Duration:', rt(rl,1,24))
+paste('Fate: ', rt(gme_fate_check),
+'Event:',rt(gme_event_check),
+'Detail:',rt(gme_detail_check),
+'Name:',rt(perilous_place))
+paste(
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(gme_actions_table2))
+```
+
+Esbert travels for eight hours to the south, and it begins to rain. The ground becomes thick muck, and Esbert notices a few vermin crawling about in the muck. Because of the rain, and Esbert becomes a bit lost and spends another 8 hours getting his bearings.
+
+```{r echo=FALSE}
+#Hex terrain generator
+rt(ose_randevent, 'scrub')
+#Hex contents generator
+paste(rt(ose_weather), ' Duration:', rt(rl,1,24))
+paste('Fate: ', rt(gme_fate_check),
+'Event:',rt(gme_event_check),
+'Detail:',rt(gme_detail_check),
+'Name:',rt(perilous_place))
+paste(
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(coren::gme_description_table),
+rt(gme_actions_table2))
+```
+
+## (0,0) Lunst
+### Time: Day 3, 2200
+
+The rain becomes heavier and weather becomes a lot colder. Thunder crackles menacingly in the air. Thankfully, he has managed to find  way to the settlement despite being lost.
+
+When Esbert returns, he has a meal and a warm bath and retires to his cottage to bandage himself and decides to rest for the week to Recover from his wounds.
+
+As Esbert has went through quite a lot of trouble today trying to evade the attacks of foes, he tries to level up dodge.
+
+```{r echo=FALSE}
+sroll<-rt(roll,1,100)
+paste("Dodge:",sroll,"VS",41)
+```
+
+The roll fails, so he grows by 1d6!
+```{r echo=FALSE}
+sroll<-rt(roll,1,6)
+paste("Dodge:",sroll,"+",41)
+paste("Dodge: 43")
+```
+
+For his discoveries, he only got 20 GP from the Explorers Guild, mainly for discovering and recording the location of an extensive ruin.
+
+```
+Time: Day 3, 2200
+Name: Esbert Morys
+Dynasty: Morys
+
+BEA: 1   ABL: 5   STR: 5   SPI: 3
+HP: 10   MP: 6   FC 10   SAN 50
+swords 48 parry 42 alchemy 48 dodge 43 acrobatics 46 stealth 35 aim 50
+Special Trait: Aim +10
+Wealth: 603 GP
+Longsword (1d4, 8GP)
+Worn Padded Vest (2a, T, 1GP)
+Lesser Catalyst [5] (D20, 4GP)
+Techniques: Boar's Tusk (D35, FC1), Strike of the Lady (D45, FC2)
+Spells: Firebolt (D35, R20m, MP2)
+
+Items: Adventurers Kit [2 Torches] + Rations [2], Blue Candle 
+
+Adventures Completed: 2
+Fame: "Triumpher of Ublad", "Trialblazer of The Spring"
+```
+Esbert makes a mental note to find a companion next time, prepare better equipment, and to bring treasures back next time. This exploration session was quite a mess and he forgot to look for treasures to bring back...
+
+The session ends for now! Stay tuned for more adventures next week!
