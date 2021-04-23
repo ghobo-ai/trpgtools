@@ -1,5 +1,84 @@
 # Stuff from CDD4 Old School Essentials Reference
 # TODO: Encounter tables + Creature/Treasure generator
+# Magic Item Generator
+
+#Treasure Types
+#' @export
+ose_treasure <- function (taip = "A"){
+  msg <- ""
+  if (taip == "A"){
+    #Pre-generate potential loot
+    cp <- sample(1:6, 1)#CP
+    cp <- cp * 1000
+    sp <- sample(1:6, 1)#SP
+    sp <- sp * 1000
+    ep <- sample(1:4, 1)#EP
+    ep <- ep * 1000
+    gp <- sample(1:6, 1)+sample(1:6, 1)#GP
+    gp <- gp *1000
+    pp <- sample (1:2,1)
+    pp <- pp*1000
+    gem <- sample(1:6, 1)+sample(1:6, 1)+sample(1:6, 1)+sample(1:6, 1)+sample(1:6, 1)+sample(1:6, 1)#Gems
+    jewel <- sample(1:6, 1)+sample(1:6, 1)+sample(1:6, 1)+sample(1:6, 1)+sample(1:6, 1)+sample(1:6, 1)#Jewellery
+    mitem <- 3 #Magic Item
+
+    #Determine if loot found
+    msg <- paste("Treasure", taip, ":")
+    roll <- sample(1:100, 1)
+    if(roll < 25){msg <- paste(msg, as.character(cp), "cp,")}
+    roll <- sample(1:100, 1)
+    if(roll < 30){msg <- paste(msg, as.character(sp), "sp,")}
+    roll <- sample(1:100, 1)
+    if(roll < 20){msg <- paste(msg, as.character(ep), "ep,")}
+    roll <- sample(1:100, 1)
+    if(roll < 35){msg <- paste(msg, as.character(gp), "gp,")}
+    roll <- sample(1:100, 1)
+    if(roll < 25){msg <- paste(msg, as.character(pp), "pp,")}
+    roll <- sample(1:100, 1)
+    if(roll < 50){msg <- paste(msg, as.character(gem), "gems,")}
+    roll <- sample(1:100, 1)
+    if(roll < 50){msg <- paste(msg, as.character(jewel), "jewellery,")}
+    roll <- sample(1:100, 1)
+    if(roll < 30){msg <- paste(msg, as.character(mitem), "magic items")}
+
+  }
+  else if (taip == "B"){}
+  else if (taip == "C"){}
+  else if (taip == "D"){}
+  else if (taip == "E"){}
+  else if (taip == "F"){}
+  else if (taip == "G"){}
+  else if (taip == "H"){}
+  else if (taip == "I"){}
+  else if (taip == "J"){}
+  else if (taip == "K"){}
+  else if (taip == "L"){}
+  else if (taip == "M"){}
+  else if (taip == "N"){}
+  else if (taip == "O"){}
+  else if (taip == "P"){}
+  else if (taip == "Q"){}
+  else if (taip == "R"){}
+  else if (taip == "S"){}
+  else if (taip == "T"){}
+  else if (taip == "U"){
+    #Pre-generate potential loot
+    cp <- sample(1:100, 1)#CP
+    sp <- sample(1:100, 1)#SP
+    gp <- sample(1:100, 1)#GP
+    gem <- sample(1:4, 1)#Gems
+    jewel <- sample(1:4, 1)#Jewellery
+    mitem <- 1 #Magic Item
+
+    #Determine if loot found
+    roll <- sample(1:12, 1)
+
+  }
+  else if (taip == "V"){}
+  else{}
+  print(msg)
+}
+
 #Random Event - 12 Rows
 #' @export
 ose_randevent <- function(terrain = 'plains'){
