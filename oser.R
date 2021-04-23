@@ -5,15 +5,136 @@
 
 # Potion Generator
 
-# Magic Item Generator
-ose_dd_magic_item <- function (noweapon = FALSE){
+# Delving Deeper Misc Magic Weapons
+#' @export
+dd_misc_weapon <- function (){
+  item <- ""
+  roll = sample(1:100,1)
+  if (roll <= 13){item <- "Arrows or bolts +1"}
+  else if (roll >= 14 && roll <= 20){item <- "Arrows or bolts +2"}
+  else if (roll >= 21 && roll <= 30){item <- "Axe +1"}
+  else if (roll >= 31 && roll <= 35){item <- "Axe +2"}
+  else if (roll >= 36 && roll <= 42){item <- "Bow +1"}
+  else if (roll >= 43 && roll <= 47){item <- "Dagger +1, +2 VS (hob)goblins"}
+  else if (roll >= 48 && roll <= 52){item <- "Dagger +1, +2 VS kobolds & reptile"}
+  else if (roll >= 53 && roll <= 57){item <- "Dagger +1, +2 VS orcs & gnolls"}
+  else if (roll >= 58 && roll <= 62){item <- "Dagger +1, +2 VS men"}
+  else if (roll >= 63 && roll <= 67){item <- "Flail +1"}
+  else if (roll >= 68 && roll <= 70){item <- "Mace +1"}
+  else if (roll >= 71 && roll <= 72){item <- "Mace +2"}
+  else if (roll >= 73 && roll <= 77){item <- "Morning Star +1"}
+  else if (roll >= 78 && roll <= 82){item <- "Shortsword +1"}
+  else if (roll >= 83 && roll <= 84){item <- "Shortsword +1, +3 vs humanoid"}
+  else if (roll >= 85 && roll <= 89){item <- "Spear +1"}
+  else if (roll >= 90 && roll <= 91){item <- "Spear +2"}
+  else if (roll == 92){item <- "Spear +3"}
+  else if (roll >= 93 && roll <= 97){item <- "War hammer +1"}
+  else if (roll >= 98 && roll <= 99){item <- "War hammer +2"}
+  else if (roll == 100){item <- "War hammer +3"}
+  else {item <- "None"}
 
-  if(noweapon == FALSE){}
-  else{
-
-
+  if(item == "Arrows or bolts +1"){
+    rolle = sample(5:30,1)
+    item <- paste(item, " " ,"[",rolle,"]", sep = "")
+  }
+  if(item == "Arrows or bolts +2"){
+    rolle = sample(4:24,1)
+    item <- paste(item, " " ,"[",rolle,"]", sep = "")
   }
 
+  return (item)
+}
+
+# Delving Deeper Misc Magic Items
+#' @export
+dd_magic_misc <- function (){
+  item <- ""
+  roll = sample(1:100,1)
+  if (roll <= 4){item <- "Amulet of Proof Against Detection"}
+  else if (roll >= 5 && roll <= 8){item <- "Bag of Holding"}
+  else if (roll >= 9 && roll <= 14){item <- "Boots of Elvenkind"}
+  else if (roll >= 15 && roll <= 18){item <- "Boots of Levitation"}
+  else if (roll >= 19 && roll <= 22){item <- "Boots of Speed"}
+  else if (roll >= 23 && roll <= 26){item <- "Boots of Striding and Springing"}
+  else if (roll >= 27 && roll <= 30){item <- "Cloak of Displacement"}
+  else if (roll >= 31 && roll <= 36){item <- "Cloak of Elvenkind"}
+  else if (roll >= 37 && roll <= 42){item <- "Crystal Ball"}
+  else if (roll >= 45 && roll <= 48){item <- "Efreeti Bottle"}
+  else if (roll >= 49 && roll <= 52){item <- "Flying Broomstick"}
+  else if (roll >= 53 && roll <= 54){item <- "Flying Carpet"}
+  else if (roll >= 55 && roll <= 61){item <- "Gauntlets of Ogre Power"}
+  else if (roll >= 62 && roll <= 65){item <- "Girdle of Giant's Might"}
+  else if (roll >= 66 && roll <= 72){item <- "Helm of Alignment Change"}
+  else if (roll >= 73 && roll <= 76){item <- "Helm of Language and Magic Comprehension"}
+  else if (roll >= 77 && roll <= 80){item <- "Helm of Telepathy"}
+  else if (roll >= 81 && roll <= 82){item <- "Helm of Teleportation"}
+  else if (roll >= 83 && roll <= 84){item <- "Horn of Blasting"}
+  else if (roll >= 85 && roll <= 90){item <- "Medallion of Thoughts"}
+  else if (roll >= 91 && roll <= 92){item <- "Mirror of Life Trapping"}
+  else if (roll >= 93 && roll <= 96){item <- "Object of Commanding Elementals"}
+  else if (roll >= 97 && roll <= 100){item <- "Scarab of Protection"}
+  else {item <- "None"}
+
+  if(item == "Object of Commanding Elementals"){
+    rolle = sample(1:4,1)
+    if(rolle == 1){ item <- "Stone of Controlling Earth Elementals"}
+    else if (rolle == 2){item <- "Brazier of Controlling Fire Elementals"}
+    else if (rolle == 3){item <- "Censer of Controlling Air Elementals"}
+    else if (rolle == 4){item <- "Bowl of Commanding Water Elementals"}
+  }
+
+  if(item == "Scarab of Protection"){
+    rolle = sample(1:6,1)+ sample(1:6,1)
+    item <- paste(item, rolle, "uses")
+  }
+
+  return (item)
+}
+
+# Delving Deeper Magic Armor and Shields
+#' @export
+dd_magic_armor <- function (){
+  item <- ""
+  roll = sample(1:100,1)
+  if (roll <= 30){item <- "Shield +1"}
+  else if (roll >= 31 && roll <= 45){item <- "Shield +2"}
+  else if (roll >= 46 && roll <= 50){item <- "Shield +3"}
+  else if (roll >= 51 && roll <= 75){item <- "Plate armor +1"}
+  else if (roll >= 76 && roll <= 85){item <- "Plate armor +2"}
+  else if (roll >= 86 && roll <= 95){item <- "Plate armor & shield +1"}
+  else if (roll >= 96 && roll <= 100){item <- "Plate armor & shield +2"}
+  else {item <- "None"}
+  return (item)
+}
+
+# Delving Deeper Magic Item Generator
+#' @export
+dd_magic_item <- function (noweapon = FALSE){
+  item <- ""
+  if(noweapon == FALSE){
+    roll = sample(1:100,1)
+    if (roll <= 15){item <- "Armor"}
+    else if (roll >= 16 && roll <= 25){item <- "Misc Magic Item"}
+    else if (roll >= 26 && roll <= 35){item <- "Misc Weapon"}
+    else if (roll >= 36 && roll <= 50){item <- "Potion"}
+    else if (roll >= 56 && roll <= 70){item <- "Ring"}
+    else if (roll >= 71 && roll <= 80){item <- "Spellbook or Scroll"}
+    else if (roll >= 81 && roll <= 100){item <- "Sword"}
+    else {item <- "None"}
+  }
+  else{
+    roll = sample(1:100,1)
+    if (roll <= 15){item <- "Armor"}
+    else if (roll >= 16 && roll <= 25){item <- "Misc Magic Item"}
+    else if (roll >= 26 && roll <= 35){item <- "Potion"}
+    else if (roll >= 36 && roll <= 50){item <- "Potion"}
+    else if (roll >= 56 && roll <= 70){item <- "Ring"}
+    else if (roll >= 71 && roll <= 80){item <- "Spellbook or Scroll"}
+    else if (roll >= 81 && roll <= 100){item <- "Misc Magic Item"}
+    else {item <- "None"}
+
+  }
+  print(paste("Delving Depper Magic Item:", item))
 }
 
 #Treasure Types
