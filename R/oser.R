@@ -877,6 +877,8 @@ ose_treasure <- function (taip = ""){
     roll <- sample(1:100, 1)
     if(roll <= 45){msg <- paste(msg, as.character(jewel), "jewellery,")}
   }
+
+
   else if (taip == "N"){
     #Pre-generate potential loot
     gems <- sample(1:4, 1)+sample(1:4, 1)
@@ -886,11 +888,11 @@ ose_treasure <- function (taip = ""){
     roll <- sample(1:100, 1)
     if(roll <= 40){
       msg <- paste(msg, as.character(gems), "potions.")
-      for (n in 1:gems){
-        msg <- paste (msg, dd_potion)
-      }
+      for (n in 1:gems){ msg <- paste (msg, dd_potion())}
+    }else{
 
-      }
+      msg <- paste (msg, gems, "empty potion flasks")
+    }
 
 
   }
