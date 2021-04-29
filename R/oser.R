@@ -26,7 +26,7 @@ dd_jewelry <- function(){
   else if (theRoll>=21 && theRoll<=40){val <- sample(300:1800,1)}
   else if (theRoll>=41 && theRoll<=60){val <- sample(400:4000,1)}
   else if (theRoll>=61 && theRoll<=80){val <- sample(1000:6000,1)}
-  else if (theRoll>=81 && theRolle <=90){val <- sample(2000:8000,1)}
+  else if (theRoll>=81 && theRoll <=90){val <- sample(2000:8000,1)}
   else if (theRoll>=91){val <- sample(2000:12000,1)}
 
   return(val)
