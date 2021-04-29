@@ -2,6 +2,51 @@
 # TODO: Encounter tables + Creature/Treasure generator
 # Powers generator
 
+#' @export
+dd_gem <- function(){
+  theRoll <- roll(1,100)
+  val <- 0
+  if(theRoll<=8){val <- 10}
+  else if (theRoll>=9 && theRoll<=22){val <- 30}
+  else if (theRoll>=23 && theRoll<=67){val <- 100}
+  else if (theRoll>=68 && theRoll<=87){val <- 300}
+  else if (theRoll>=88 && theRolle <=98){val <- 1000}
+  else if (theRoll==99){val <- 3000}
+  else if (theRoll==99){val <- 10000}
+
+  return(val)
+
+}
+
+dd_jewelry <- function(){
+  theRoll <- roll(1,100)
+  val <- 0
+  if(theRoll<=20){val <- val <- sample(200:1200,1)}
+  else if (theRoll>=21 && theRoll<=40){val <- sample(300:1800,1)}
+  else if (theRoll>=41 && theRoll<=60){val <- sample(400:4000,1)}
+  else if (theRoll>=61 && theRoll<=80){val <- sample(1000:6000,1)}
+  else if (theRoll>=81 && theRolle <=90){val <- sample(2000:8000,1)}
+  else if (theRoll>=91){val <- sample(2000:12000,1)}
+
+  return(val)
+
+}
+
+#' @export
+dd_morale_check <- function(loyalty=0){
+  theRoll <- roll(2,6,loyalty)
+  reaction <- ''
+  if(theRoll<=2){reaction <- 'Surrender'}
+  else if (theRoll>=3 && theRoll<=5){reaction <- 'Flee'}
+  else if (theRoll>=6 && theRoll<=8){reaction <- 'Stand off or hold'}
+  else if (theRoll>=9 && theRoll<=11){reaction <- 'Press for advantage'}
+  else if (theRoll>=12){reaction <- 'Attack impetuously!'}
+
+  msg <- paste(theRoll,reaction)
+  return(msg)
+
+}
+
 # Delving Deeper Magic (Sword) Weapon
 #' @export
 dd_magic_weapon <- function (){
