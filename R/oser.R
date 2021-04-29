@@ -18,6 +18,7 @@ dd_gem <- function(){
 
 }
 
+#'@export
 dd_jewelry <- function(){
   theRoll <- roll(1,100)
   val <- 0
